@@ -1,0 +1,41 @@
+{
+  "name": "iot-device-registration",
+  "version": "0.9.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "npm run build:live",
+    "build": "tsc -p .",
+    "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "test:validator": "mocha -r ts-node/register test/**/jsonValidator.spec.ts",
+    "test:logger": "mocha --timeout 5000 -r ts-node/register test/**/logger.spec.ts",
+    "test:mongodb": "mocha -r ts-node/register test/**/mongodb.spec.ts",
+    "test:mqtt": "mocha -r ts-node/register test/**/mqtt.spec.ts"
+  },
+  "keywords": [
+    "IoT"
+  ],
+  "author": "Hendrik Scholz",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.3",
+    "@types/wait-on": "^3.2.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "mongodb-memory-server": "^5.2.0",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.2",
+    "wait-on": "^3.3.0"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.5.16",
+    "ajv": "^6.10.2",
+    "log4js": "^5.1.0",
+    "mongoose": "^5.6.11",
+    "mqtt": "^3.0.0"
+  }
+}

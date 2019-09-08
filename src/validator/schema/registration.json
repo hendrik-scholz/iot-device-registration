@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "authorization": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type":"string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "deedOwner": {
+                    "type": "string"
+                }
+            },
+            "required": ["name", "role", "deedOwner"],
+            "additionalProperties": false
+        },
+        "geoposition": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                },
+                "longitude": {
+                    "type":"number",
+                    "minimum": -180,
+                    "maximum": 180
+                }
+            },
+            "required": ["latitude", "longitude"],
+            "additionalProperties": false
+        },
+        "identification": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "device": {
+                    "type":"string"
+                },
+                "schedule": {
+                    "type": "array",
+                    "item": {
+                        "properties": {
+                            "dateTime": {
+                                "type":"string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["dateTime", "description"],
+                        "additionalProperties": false
+                    }
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "required": ["company", "device", "version"],
+            "additionalProperties": false
+        },
+        "timestamp": {
+            "type": "string"
+        }
+    },
+    "required": ["authorization", "geoposition", "identification", "timestamp"],
+    "additionalProperties": false
+}
