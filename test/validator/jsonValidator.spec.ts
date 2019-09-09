@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import { isValidRegistrationMessage } from '../../src/validator/jsonValidator';
 
-describe('iot-device-registration', () => {
+describe('iot-device-registry', () => {
     describe('jsonValidator', () => {
         it('should validate a valid registration message', (done) => {
             const registrationMessage = {"authorization":{"name":"Lawrence Robertson","role":"C.E.O.","deedOwner":"U.S. Robotics Corporation"},"geoposition":{"latitude":-72.080605,"longitude":25.025266},"identification":{"company":"USR","device":"Demolition Robot","schedule":[{"dateTime":"2004-07-07T08:00:00.00Z","description":"demolition"}],"version":"9-4"},"timestamp":"2019-09-01T12:34:43.502Z"};

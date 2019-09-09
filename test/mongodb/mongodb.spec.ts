@@ -23,7 +23,7 @@ function shutdownMongoDb() {
     mongod.stop();
 }
 
-describe('iot-device-registration', () => {
+describe('iot-device-registry', () => {
     describe('mongodb', () => {
         before('get mongoDB connection string', (done) => {
             getMongoDbConnectionString()

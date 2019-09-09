@@ -1,5 +1,5 @@
 {
-  "name": "iot-device-registration",
+  "name": "iot-device-registry",
   "version": "0.9.0",
   "description": "",
   "main": "lib/index.js",

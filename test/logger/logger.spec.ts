@@ -23,7 +23,7 @@ function deleteLogFile(callback: any) {
     });
 }
 
-describe('iot-device-registration', () => {
+describe('iot-device-registry', () => {
     describe('logger', () => {
 
         before('delete log file', (done) => {

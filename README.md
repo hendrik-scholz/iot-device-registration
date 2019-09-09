@@ -1,1 +1,1 @@
-# iot-device-registration
+# iot-device-registry
