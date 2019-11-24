@@ -67,8 +67,11 @@
         },
         "timestamp": {
             "type": "string"
+        },
+        "uuid": {
+            "type": "string"
         }
     },
-    "required": ["authorization", "geoposition", "identification", "timestamp"],
+    "required": ["authorization", "geoposition", "identification", "timestamp", "uuid"],
     "additionalProperties": false
 }
