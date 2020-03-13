@@ -1,3 +1,4 @@
 /app.log
 /lib
 /node_modules
+/iot-device-registry.code-workspace
