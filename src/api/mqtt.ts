@@ -1,27 +1,10 @@
 import { EventEmitter } from 'events';
 import mqtt from 'mqtt';
 
-import { createLogger } from '../logger/logger';
-
-import { isValidRegistrationMessage } from '../validator/jsonValidator';
+import { createLogger } from '../services/logService';
 
 const logger = createLogger();
-
-function getMappedCoordinates(geoposition: any) {
-    const coordinates = [];
-
-    if (geoposition) {
-        coordinates.push(geoposition.longitude);
-        coordinates.push(geoposition.latitude);
-    }
-
-    const mappedGeoPosition = {
-        type: 'Point',
-        coordinates: coordinates
-    };
-
-    return mappedGeoPosition;
-}
+const event = 'registration';
 
 function subscribeToRegisterTopic(eventEmitter: EventEmitter) {
     const mqttHost = '127.0.0.1';
@@ -48,16 +31,7 @@ function subscribeToRegisterTopic(eventEmitter: EventEmitter) {
             logger.info(`Received message: ${messageAsBuffer.toString()}.`);
 
             const message = JSON.parse(messageAsBuffer.toString());
-
-            isValidRegistrationMessage(message)
-                .then(() => {
-                    message.geoposition = getMappedCoordinates(message.geoposition);
-
-                    eventEmitter.emit('registration', message);
-                })
-                .catch((error) => {
-                    logger.warn(`Invalid registration message: ${error}`);
-                });
+            eventEmitter.emit(event, message);
         });
 
         mqttClient.on('error', (error) => {

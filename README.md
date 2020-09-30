@@ -17,3 +17,12 @@ In order to use iot-device-registry you need the following setup:
 ### Register
 
 Subscribes to a topic of an MQTT broker. Received register messages are mapped and saved to a collection in a MongoDB.
+
+### Test
+
+If you have trouble running the test "test:db", add the option "{ debug: true }" to "new MongoMemoryServer()" to find out more about the
+reason. On ubuntu 18.04 for example the package "libcurl3" has to be installed in order to get the MongoMemoryServer started.
+
+```javascript
+mongoServer = new MongoMemoryServer({ debug: true });
+```
