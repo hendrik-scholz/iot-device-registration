@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "521d5dea-6fcc-4513-affc-e7db354b3541",
+		"name": "iot-device-registry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "isalive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2262fb4-e964-4e82-934e-b595c9d6decf",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/isalive",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"isalive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "devices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79b4fed6-63b9-4279-a037-7aacef1c1ed0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "device with UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c091201-af02-4e7f-86ec-60f264e35ba2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/50b56281-1d81-4db1-b739-1ea234d16b1c",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"50b56281-1d81-4db1-b739-1ea234d16b1c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "devices in geofence",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "739b6eb0-e48b-4504-b181-040cb0a84f9d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/geofence?lat=65.065085&lng=-140.43114&radius=500000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"geofence"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "65.065085"
+						},
+						{
+							"key": "lng",
+							"value": "-140.43114"
+						},
+						{
+							"key": "radius",
+							"value": "500000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
