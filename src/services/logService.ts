@@ -1,23 +1,23 @@
-import { configure, getLogger, Logger } from "log4js";
+import { configure, getLogger, Logger } from 'log4js';
 
 function createLogger(): Logger {
-  const logger = getLogger("iot-device-registry");
-  logger.level = "info";
+  const logger = getLogger('iot-device-registry');
+  logger.level = 'info';
 
   configure({
     appenders: {
       console: {
-        type: "console",
+        type: 'console',
       },
       file: {
-        filename: "app.log",
-        type: "file",
+        filename: 'app.log',
+        type: 'file',
       },
     },
     categories: {
       default: {
-        appenders: ["console", "file"],
-        level: "info",
+        appenders: ['console', 'file'],
+        level: 'info',
       },
     },
   });

@@ -1,8 +1,8 @@
 // https://stackoverflow.com/questions/13607732/in-memory-mongodb-for-test
 // https://www.npmjs.com/package/mongodb-memory-server
-import { MongoMemoryServer } from "mongodb-memory-server";
-import { DeviceModel } from "../../src/db/deviceSchema";
-import mongoose, { Mongoose } from "mongoose";
+import { MongoMemoryServer } from 'mongodb-memory-server';
+import { DeviceModel } from '../../src/db/deviceSchema';
+import mongoose, { Mongoose } from 'mongoose';
 
 let mongod: MongoMemoryServer;
 let connectionString: string;
@@ -31,7 +31,7 @@ function getConnectionStringForInMemoryMongoDB(): string {
 }
 
 function getConnectionStringForLocalMongoDB(): string {
-  return "mongodb://127.0.0.1:27017/test";
+  return 'mongodb://127.0.0.1:27017/test';
 }
 
 // function connectToMongoDb(connString: string): Promise<Mongoose> {

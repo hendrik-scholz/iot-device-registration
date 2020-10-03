@@ -1,14 +1,14 @@
-import express from "express";
-import { Express, Request, Response } from "express";
-import * as HttpStatus from "http-status-codes";
+import express from 'express';
+import { Express, Request, Response } from 'express';
+import * as HttpStatus from 'http-status-codes';
 
 import {
   getDevices_,
   getDeviceForUuid_,
   getDevicesInGeofence_,
-} from "../services/deviceService";
-import { createLogger } from "../services/logService";
-import { Geofence } from "../types/geofence";
+} from '../services/deviceService';
+import { createLogger } from '../services/logService';
+import { Geofence } from '../types/geofence';
 
 const logger = createLogger();
 
@@ -25,20 +25,20 @@ function startService(): void {
     next();
   });
 
-  app.get("/isalive", (req: Request, res: Response) => {
+  app.get('/isalive', (req: Request, res: Response) => {
     res.status(204).send();
   });
 
-  app.get("/devices", (req: Request, res: Response) => {
+  app.get('/devices', (req: Request, res: Response) => {
     getDevices_()
       .then((devices) => {
-        res.append("Access-Control-Allow-Origin", "*");
+        res.append('Access-Control-Allow-Origin', '*');
         res.json(devices);
       })
       .catch((error) => res.sendStatus(500));
   });
 
-  app.get("/devices/geofence", (req: Request, res: Response) => {
+  app.get('/devices/geofence', (req: Request, res: Response) => {
     if (
       req &&
       req.query &&
@@ -60,12 +60,12 @@ function startService(): void {
         .then((devices) => res.json(devices))
         .catch((error) => res.sendStatus(500));
     } else {
-      logger.warn("Query params not set.");
-      res.status(HttpStatus.BAD_REQUEST).send({ message: "Bad Request." });
+      logger.warn('Query params not set.');
+      res.status(HttpStatus.BAD_REQUEST).send({ message: 'Bad Request.' });
     }
   });
 
-  app.get("/devices/:id", (req: Request, res: Response) => {
+  app.get('/devices/:id', (req: Request, res: Response) => {
     if (req && req.params && req.params.id) {
       const uuid = req.params.id;
 
@@ -73,8 +73,8 @@ function startService(): void {
         .then((device) => res.json(device))
         .catch((error) => res.sendStatus(500));
     } else {
-      logger.warn("Query params not set.");
-      res.status(HttpStatus.BAD_REQUEST).send({ message: "Bad Request." });
+      logger.warn('Query params not set.');
+      res.status(HttpStatus.BAD_REQUEST).send({ message: 'Bad Request.' });
     }
   });
 

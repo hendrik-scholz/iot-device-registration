@@ -2,9 +2,9 @@ import {
   getDevices,
   getDeviceForUuid,
   getDevicesInGeofence,
-} from "../db/mongodb";
-import { Device } from "../types/device";
-import { Geofence } from "../types/geofence";
+} from '../db/mongodb';
+import { Device } from '../types/device';
+import { Geofence } from '../types/geofence';
 
 function getDevices_(): Promise<Device[]> {
   return getDevices();

@@ -1,9 +1,9 @@
 // subscribe to registration event on MQTT new registration message
 
-import { Device } from "../types/device";
-import { EventEmitter } from "events";
+import { Device } from '../types/device';
+import { EventEmitter } from 'events';
 
-const event = "registration";
+const event = 'registration';
 
 let emitter;
 

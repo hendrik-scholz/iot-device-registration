@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
@@ -29,7 +29,7 @@ function getDeviceSchema() {
       timestamp: Date,
       uuid: String,
     },
-    { typeKey: "$type" }
+    { typeKey: '$type' }
   ); // https://stackoverflow.com/questions/33846939/mongoose-schema-error-cast-to-string-failed-for-value-when-pushing-object-to
 
   return deviceSchema;
@@ -37,7 +37,7 @@ function getDeviceSchema() {
 
 const schema = getDeviceSchema();
 
-schema.index({ geoposition: "2dsphere" }); // DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
-const DeviceModel = mongoose.model("device", schema);
+schema.index({ geoposition: '2dsphere' }); // DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+const DeviceModel = mongoose.model('device', schema);
 
 export { DeviceModel };

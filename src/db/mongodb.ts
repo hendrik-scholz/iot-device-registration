@@ -1,21 +1,21 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose, { Mongoose } from 'mongoose';
 
-import { Geofence } from "../types/geofence";
-import { Device } from "../types/device";
-import { DeviceModel } from "./deviceSchema";
-import { createLogger } from "../services/logService";
+import { Geofence } from '../types/geofence';
+import { Device } from '../types/device';
+import { DeviceModel } from './deviceSchema';
+import { createLogger } from '../services/logService';
 
 const logger = createLogger();
 
 function connectToMongoDbForConnectionString(
   connectionString: string
 ): Promise<Mongoose> {
-  logger.info("Connecting to MongoDB.");
+  logger.info('Connecting to MongoDB.');
   return mongoose.connect(connectionString, { useNewUrlParser: true });
 }
 
 function disconnectFromMongoDb(): Promise<void> {
-  logger.info("Disconnecting from MongoDB.");
+  logger.info('Disconnecting from MongoDB.');
   return mongoose.connection.close();
 }
 
@@ -52,17 +52,17 @@ function getDevices(): Promise<Device[]> {
   pipeline.push({
     $project: {
       _id: 0,
-      authorization: "$authorization",
-      "geoPosition.type": "$geoposition.type",
-      "geoPosition.coordinates.longitude": {
-        $arrayElemAt: ["$geoposition.coordinates", 0],
+      authorization: '$authorization',
+      'geoPosition.type': '$geoposition.type',
+      'geoPosition.coordinates.longitude': {
+        $arrayElemAt: ['$geoposition.coordinates', 0],
       },
-      "geoPosition.coordinates.latitude": {
-        $arrayElemAt: ["$geoposition.coordinates", 1],
+      'geoPosition.coordinates.latitude': {
+        $arrayElemAt: ['$geoposition.coordinates', 1],
       },
-      identification: "$identification",
-      timestamp: { $dateToString: { date: "$timestamp" } },
-      uuid: "$uuid",
+      identification: '$identification',
+      timestamp: { $dateToString: { date: '$timestamp' } },
+      uuid: '$uuid',
     },
   });
 
@@ -75,17 +75,17 @@ function getDeviceForUuid(uuid: string): Promise<Device> {
   pipeline.push({
     $project: {
       _id: 0,
-      authorization: "$authorization",
-      "geoPosition.type": "$geoposition.type",
-      "geoPosition.coordinates.longitude": {
-        $arrayElemAt: ["$geoposition.coordinates", 0],
+      authorization: '$authorization',
+      'geoPosition.type': '$geoposition.type',
+      'geoPosition.coordinates.longitude': {
+        $arrayElemAt: ['$geoposition.coordinates', 0],
       },
-      "geoPosition.coordinates.latitude": {
-        $arrayElemAt: ["$geoposition.coordinates", 1],
+      'geoPosition.coordinates.latitude': {
+        $arrayElemAt: ['$geoposition.coordinates', 1],
       },
-      identification: "$identification",
-      timestamp: { $dateToString: { date: "$timestamp" } },
-      uuid: "$uuid",
+      identification: '$identification',
+      timestamp: { $dateToString: { date: '$timestamp' } },
+      uuid: '$uuid',
     },
   });
   pipeline.push({ $limit: 1 });
@@ -106,27 +106,27 @@ function getDevicesInGeofence(geofence: Geofence): Promise<Device[]> {
   pipeline.push({
     $geoNear: {
       near: {
-        type: "Point",
+        type: 'Point',
         coordinates: [geofence.longitude, geofence.latitude],
       },
-      distanceField: "dist.calculated",
+      distanceField: 'dist.calculated',
       maxDistance: geofence.radiusInMeters,
     },
   });
   pipeline.push({
     $project: {
       _id: 0,
-      authorization: "$authorization",
-      "geoPosition.type": "$geoposition.type",
-      "geoPosition.coordinates.longitude": {
-        $arrayElemAt: ["$geoposition.coordinates", 0],
+      authorization: '$authorization',
+      'geoPosition.type': '$geoposition.type',
+      'geoPosition.coordinates.longitude': {
+        $arrayElemAt: ['$geoposition.coordinates', 0],
       },
-      "geoPosition.coordinates.latitude": {
-        $arrayElemAt: ["$geoposition.coordinates", 1],
+      'geoPosition.coordinates.latitude': {
+        $arrayElemAt: ['$geoposition.coordinates', 1],
       },
-      identification: "$identification",
-      timestamp: { $dateToString: { date: "$timestamp" } },
-      uuid: "$uuid",
+      identification: '$identification',
+      timestamp: { $dateToString: { date: '$timestamp' } },
+      uuid: '$uuid',
     },
   });
 
