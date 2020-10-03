@@ -1,4 +1,4 @@
 export interface Schedule {
-    dateTime: string;
-    description: string;
+  dateTime: string;
+  description: string;
 }

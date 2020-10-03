@@ -1,6 +1,6 @@
-import { Coordinates } from './coordinates'
+import { Coordinates } from "./coordinates";
 
 export interface GeoPosition {
-    type: string;
-    coordinates: Coordinates;
+  type: string;
+  coordinates: Coordinates;
 }

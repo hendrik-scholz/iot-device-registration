@@ -2,3 +2,5 @@
 /lib
 /node_modules
 /iot-device-registry.code-workspace
+/.nyc_output
+/coverage
