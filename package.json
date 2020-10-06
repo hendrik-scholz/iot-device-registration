@@ -7,13 +7,15 @@
     "start": "npm run build:live",
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
-    "test:db": "nyc --reporter=html mocha -r ts-node/register test/db/mongodb.spec.ts",
-    "test:deviceservice": "nyc --reporter=html mocha -r ts-node/register test/services/deviceService.spec.ts",
-    "test:sub": "nyc --reporter=html mocha -r ts-node/register test/subscribers/registration.spec.ts",
-    "test:apihttp": "start-server-and-test start http://127.0.0.1:3000/isalive test:http",
-    "test:apimqtt": "start-server-and-test start http://127.0.0.1:3000/isalive test:mqtt",
+    "cover:report": "nyc report --reporter=lcov --reporter=html",
+    "test:db": "nyc --silent --no-clean mocha -r ts-node/register test/db/mongodb.spec.ts",
+    "test:deviceservice": "nyc --silent --no-clean mocha -r ts-node/register test/services/deviceService.spec.ts",
+    "test:subscribe": "nyc --silent --no-clean mocha -r ts-node/register test/subscribers/registration.spec.ts",
+    "test:apihttp": "nyc --silent --no-clean start-server-and-test start http://127.0.0.1:3000/isalive test:http",
+    "test:apimqtt": "nyc --silent --no-clean start-server-and-test start http://127.0.0.1:3000/isalive test:mqtt",
     "test:http": "mocha -r ts-node/register test/**/http.spec.ts",
-    "test:mqtt": "mocha -r ts-node/register test/**/mqtt.spec.ts"
+    "test:mqtt": "mocha -r ts-node/register test/**/mqtt.spec.ts",
+    "test": "npm run test:db && npm run test:subscribe && npm run test:apihttp && npm run test:apimqtt && npm run cover:report"
   },
   "keywords": [
     "IoT"
