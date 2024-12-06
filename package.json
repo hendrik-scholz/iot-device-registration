@@ -46,7 +46,7 @@
     "@types/mongoose": "^5.7.8",
     "ajv": "^6.12.3",
     "axios": "^1.7.7",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "http-status-codes": "^1.4.0",
     "log4js": "^6.4.0",
     "mongoose": "^5.13.20",
